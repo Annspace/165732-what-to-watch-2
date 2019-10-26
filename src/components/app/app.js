@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import Main from '../main/main.jsx';
+import Main from '../main/main';
 
 class App extends PureComponent {
   render() {
