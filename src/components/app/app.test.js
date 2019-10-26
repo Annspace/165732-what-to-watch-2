@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import App from './app';
-import mockData from '../../mocks/films';
+import mockData from '../../mocks/films.js';
 
 it(`renders correctly`, () => {
   const clickTitleHandler = jest.fn();

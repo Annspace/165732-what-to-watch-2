@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import mockData from '../../mocks/films';
+import mockData from '../../mocks/films.js';
 import MovieCard from './movie-card';
 
 it(`Correct MovieCard data on hover`, () => {

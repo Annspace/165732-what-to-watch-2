@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from './main';
-import mockData from '../../mocks/films';
+import mockData from '../../mocks/films.js';
 
 it(`renders correctly`, () => {
   const hoverCardHandler = jest.fn();
