@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App/App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app/app';
+import mockData from './mocks/films.js';
 
 const init = () => {
-  const clickTitleHandler = () => {};
-  ReactDOM.render(<App moviesNames={[`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]} onClickTitle={clickTitleHandler}/>,
+  ReactDOM.render(<App movies={mockData.movies} onHoverCard={() => {}}/>,
       document.getElementById(`root`));
 };
 init();
