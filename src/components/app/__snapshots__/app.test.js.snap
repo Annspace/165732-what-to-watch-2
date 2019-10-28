@@ -263,6 +263,7 @@ exports[`renders correctly 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Midnight Special"
@@ -276,7 +277,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films-1"
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -288,6 +289,7 @@ exports[`renders correctly 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Midnight Special"
@@ -301,7 +303,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films-2"
             >
               Bohemian Rhapsody
             </a>
@@ -313,6 +315,7 @@ exports[`renders correctly 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Midnight Special"
@@ -326,7 +329,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films-3"
             >
               Macbeth
             </a>
@@ -338,6 +341,7 @@ exports[`renders correctly 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Midnight Special"
@@ -351,7 +355,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films-4"
             >
               Aviator
             </a>
@@ -363,6 +367,7 @@ exports[`renders correctly 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Midnight Special"
@@ -376,7 +381,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films-5"
             >
               The Grand Budapest Hotel
             </a>

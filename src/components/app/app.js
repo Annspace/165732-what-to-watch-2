@@ -1,14 +1,28 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main';
+import MovieDetails from "../movie-details/movie-details";
 
-class App extends PureComponent {
-  render() {
-    const {movies, onHoverCard} = this.props;
-    return (<Main movies={movies} onHoverCard={onHoverCard}/>);
+const getPageScreen = (props) => {
+  const {movies, onHoverCard} = props;
+  switch (location.pathname) {
+    case `/`:
+      return <Main movies={movies} onHoverCard={onHoverCard}/>;
+    case `/films-${location.pathname.split(`-`).splice(-1)}`:
+      return <MovieDetails
+        movie={movies.filter((movie) => movie.id === +location.pathname.split(`-`).splice(-1))[0]}
+      />;
+    default:
+      return null;
   }
-}
-App.propTypes = {
+};
+
+const App = (props) => {
+  return <>{getPageScreen(props)}</>;
+};
+
+getPageScreen.propTypes = {
+  id: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired,
   onHoverCard: PropTypes.func.isRequired,
 };
