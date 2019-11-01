@@ -9,6 +9,7 @@ const mockData = {
       released: 2010,
       director: `Wes Andreson`,
       starrings: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+      src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ const mockData = {
       released: 2014,
       director: `Wes Andreson`,
       starrings: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+      src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     },
     {
       id: 3,
@@ -29,6 +31,7 @@ const mockData = {
       released: 2015,
       director: `Wes Andreson`,
       starrings: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+      src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ const mockData = {
       released: 2009,
       director: `Wes Andreson`,
       starrings: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+      src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     },
     {
       id: 5,
@@ -49,6 +53,7 @@ const mockData = {
       released: 2000,
       director: `Wes Andreson`,
       starrings: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+      src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     },
   ]
 };

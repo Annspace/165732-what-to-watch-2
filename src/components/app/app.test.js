@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app';
+import App from './app.jsx';
 import mockData from '../../mocks/films.js';
 
 it(`renders correctly`, () => {

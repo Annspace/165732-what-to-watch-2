@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Main from '../main/main';
-import MovieDetails from "../movie-details/movie-details";
+import Main from '../main/main.jsx';
+import MovieDetails from '../movie-details/movie-details.jsx';
 
 const getPageScreen = (props) => {
   const {movies, onHoverCard} = props;
