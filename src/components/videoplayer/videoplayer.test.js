@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoPlayer from './videoPlayer.jsx';
+import VideoPlayer from './videoplayer.jsx';
 import mockData from '../../mocks/films.js';
 
 it(`renders correctly`, () => {
