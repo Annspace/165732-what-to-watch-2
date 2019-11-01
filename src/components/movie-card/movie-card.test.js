@@ -3,7 +3,17 @@ import renderer from 'react-test-renderer';
 import MovieCard from './movie-card.jsx';
 import mockData from '../../mocks/films.js';
 
+function createNodeMock(element) {
+  if (element.type === `video`) {
+    return {
+      createRef() {}
+    };
+  }
+  return null;
+}
+
 it(`renders correctly`, () => {
+  const options = {createNodeMock};
   const hoverCardHandler = jest.fn();
   const leaveCardHandler = jest.fn();
   const MovieCardComponent = renderer
@@ -14,6 +24,6 @@ it(`renders correctly`, () => {
       onHoverCard={hoverCardHandler}
       isPlaying={false}
       onLeaveCard={leaveCardHandler}
-      src={mockData.movies[0].src}/>);
+      src={mockData.movies[0].src}/>, options).toJSON();
   expect(MovieCardComponent).toMatchSnapshot();
 });
