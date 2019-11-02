@@ -17,12 +17,13 @@ class VideoPlayer extends PureComponent {
     const {isPlaying} = this.props;
     const {playing} = this.state;
     if (isPlaying !== playing) {
-      this.setState({playing: isPlaying});
-    }
-    if (isPlaying) {
-      this.videoRef.current.play();
-    } else {
-      this.videoRef.current.load();
+      this.setState({playing: isPlaying}, () => {
+        if (isPlaying) {
+          this.videoRef.current.play();
+        } else {
+          this.videoRef.current.load();
+        }
+      });
     }
   }
 

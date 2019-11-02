@@ -7,38 +7,23 @@ class MovieList extends PureComponent {
     super(props);
     this.timer = null;
     this.state = {
-      hoveredCard: -1,
-      playingCard: -1,
+      activeCard: -1,
     };
   }
   hoverCardHandler = (id) => {
     const {onHoverCard} = this.props;
     onHoverCard();
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        hoveredCard: id,
-      };
-    });
     this.timer = setTimeout(() => {
-      if (this.state.hoveredCard === id) {
-        this.setState({
-          playingCard: id,
-        });
-      } else {
-        this.setState({
-          playingCard: -1,
-        });
-      }
+      this.setState({activeCard: id});
     }, 1000);
   };
   leaveCardHandler = () => {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        hoveredCard: -1,
-        playingCard: -1,
-      };
+    this.setState({
+      activeCard: -1,
+    }, () => {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
     });
   };
   componentWillUnmount() {
@@ -56,7 +41,7 @@ class MovieList extends PureComponent {
               posterImage={movie.posterImage}
               onHoverCard={this.hoverCardHandler}
               onLeaveCard={this.leaveCardHandler}
-              isPlaying={this.state.playingCard === movie.id}
+              isPlaying={this.state.activeCard === movie.id}
             />;
           })
         }
@@ -67,7 +52,7 @@ class MovieList extends PureComponent {
 
 MovieList.propTypes = {
   movies: PropTypes.array.isRequired,
-  onHoverCard: PropTypes.func,
+  onHoverCard: PropTypes.func.isRequired,
 };
 
 export default MovieList;
