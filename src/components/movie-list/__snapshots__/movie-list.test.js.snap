@@ -6,16 +6,17 @@ exports[`renders correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
       onClick={[Function]}
     >
-      <img
-        alt="Midnight Special"
+      <video
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -32,16 +33,17 @@ exports[`renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
       onClick={[Function]}
     >
-      <img
-        alt="Midnight Special"
+      <video
         height="175"
-        src="img/bohemian-rhapsody.jpg"
+        poster="img/bohemian-rhapsody.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -58,16 +60,17 @@ exports[`renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
       onClick={[Function]}
     >
-      <img
-        alt="Midnight Special"
+      <video
         height="175"
-        src="img/macbeth.jpg"
+        poster="img/macbeth.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -84,16 +87,17 @@ exports[`renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
       onClick={[Function]}
     >
-      <img
-        alt="Midnight Special"
+      <video
         height="175"
-        src="img/aviator.jpg"
+        poster="img/aviator.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -110,16 +114,17 @@ exports[`renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
       onClick={[Function]}
     >
-      <img
-        alt="Midnight Special"
+      <video
         height="175"
-        src="img/the-grand-budapest-hotel-poster.jpg"
+        poster="img/the-grand-budapest-hotel-poster.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>

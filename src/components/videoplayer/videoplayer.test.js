@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Main from './main';
+import VideoPlayer from './videoplayer.jsx';
 import mockData from '../../mocks/films.js';
 
 function createNodeMock(element) {
@@ -14,8 +14,12 @@ function createNodeMock(element) {
 
 it(`renders correctly`, () => {
   const options = {createNodeMock};
-  const hoverCardHandler = jest.fn();
-  const mainComponent = renderer
-    .create(<Main onHoverCard={hoverCardHandler} movies={mockData.movies}/>, options).toJSON();
-  expect(mainComponent).toMatchSnapshot();
+  const VideoPlayerComponent = renderer
+    .create(<VideoPlayer
+      isPlaying={false}
+      src={mockData.movies[0].src}
+      poster={mockData.movies[0].posterImage}
+      isMuted={true}
+    />, options).toJSON();
+  expect(VideoPlayerComponent).toMatchSnapshot();
 });
