@@ -1,13 +1,15 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../videoplayer/videoplayer.jsx';
+import {MoviePropTypes} from '../../prop-types/prop-types';
 
 class MovieCard extends PureComponent {
   navigateToDetailsPage = (id) => {
     location.href = `/films-${id}`;
   };
   render() {
-    const {id, title, posterImage, src, isPlaying, onLeaveCard, onHoverCard} = this.props;
+    const {movie, onLeaveCard, onHoverCard, isPlaying} = this.props;
+    const {id, src, posterImage, title} = movie;
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseOver={() => onHoverCard(id)}
@@ -24,12 +26,9 @@ class MovieCard extends PureComponent {
 }
 
 MovieCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  movie: MoviePropTypes.isRequired,
   onHoverCard: PropTypes.func.isRequired,
   onLeaveCard: PropTypes.func.isRequired,
-  posterImage: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };
 

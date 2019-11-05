@@ -4,7 +4,7 @@ import MovieDetails from './movie-details.jsx';
 import mockData from '../../mocks/films.js';
 
 it(`renders correctly`, () => {
-  const MovieCardComponent = renderer
+  const MovieDetailsComponent = renderer
     .create(<MovieDetails movie={mockData.movies[0]}/>);
-  expect(MovieCardComponent).toMatchSnapshot();
+  expect(MovieDetailsComponent).toMatchSnapshot();
 });

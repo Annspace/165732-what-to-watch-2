@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
-import MovieDetails from '../movie-details/movie-details.jsx';
+import MovieInfo from '../movie-info/movie-info.jsx';
 
 const getPageScreen = (props) => {
   const {movies, onHoverCard} = props;
@@ -9,7 +9,7 @@ const getPageScreen = (props) => {
     case `/`:
       return <Main movies={movies} onHoverCard={onHoverCard}/>;
     case `/films-${location.pathname.split(`-`).splice(-1)}`:
-      return <MovieDetails
+      return <MovieInfo
         movie={movies.filter((movie) => movie.id === +location.pathname.split(`-`).splice(-1))[0]}
       />;
     default:

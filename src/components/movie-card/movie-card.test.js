@@ -18,12 +18,9 @@ it(`renders correctly`, () => {
   const leaveCardHandler = jest.fn();
   const MovieCardComponent = renderer
     .create(<MovieCard
-      id={mockData.movies[0].id}
-      posterImage={mockData.movies[0].posterImage}
-      title={mockData.movies[0].title}
+      movie={mockData.movies[0]}
       onHoverCard={hoverCardHandler}
       isPlaying={false}
-      onLeaveCard={leaveCardHandler}
-      src={mockData.movies[0].src}/>, options).toJSON();
+      onLeaveCard={leaveCardHandler}/>, options).toJSON();
   expect(MovieCardComponent).toMatchSnapshot();
 });
