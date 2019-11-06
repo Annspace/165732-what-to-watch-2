@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {MoviePropTypes} from '../../prop-types/prop-types';
 import MovieList from '../movie-list/movie-list.jsx';
 
 const Main = (props) => {
@@ -123,7 +124,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   onHoverCard: PropTypes.func.isRequired,
 };
 export default Main;
