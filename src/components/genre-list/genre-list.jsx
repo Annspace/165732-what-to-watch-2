@@ -13,8 +13,7 @@ class GenreList extends PureComponent {
 
   clickGenreHandler(genreName) {
     const {onclickGenre, setGenre} = this.props;
-    setGenre(genreName);
-    onclickGenre(genreName);
+    setGenre(genreName).then(onclickGenre(genreName));
   }
 
   getUniqueGenres() {
