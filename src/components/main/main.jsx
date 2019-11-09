@@ -17,12 +17,12 @@ export class Main extends PureComponent {
     this.filterMoviesByGenre(currentGenre);
   }
 
-  filterMoviesByGenre(genreName) {
-    const {filterByGenre, movies} = this.props;
-    if (genreName === `All genres`) {
+  filterMoviesByGenre() {
+    const {filterByGenre, movies, currentGenre} = this.props;
+    if (currentGenre === `All genres`) {
       filterByGenre(movies);
     } else {
-      filterByGenre(movies.filter((movie) => movie.genre === genreName));
+      filterByGenre(movies.filter((movie) => movie.genre === currentGenre));
     }
   }
   render() {

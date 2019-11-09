@@ -11,10 +11,16 @@ class GenreList extends PureComponent {
     this.clickGenreHandler = this.clickGenreHandler.bind(this);
   }
 
+  componentDidUpdate() {
+    const {onclickGenre} = this.props;
+    onclickGenre();
+  }
+
   clickGenreHandler(genreName) {
-    const {onclickGenre, setGenre} = this.props;
-    setGenre(genreName);
-    onclickGenre(genreName);
+    const {setGenre, currentGenre} = this.props;
+    if (genreName !== currentGenre) {
+      setGenre(genreName);
+    }
   }
 
   getUniqueGenres() {
