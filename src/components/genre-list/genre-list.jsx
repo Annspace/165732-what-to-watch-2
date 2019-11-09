@@ -11,11 +11,6 @@ class GenreList extends PureComponent {
     this.clickGenreHandler = this.clickGenreHandler.bind(this);
   }
 
-  componentDidUpdate() {
-    const {onclickGenre} = this.props;
-    onclickGenre();
-  }
-
   clickGenreHandler(genreName) {
     const {setGenre, currentGenre} = this.props;
     if (genreName !== currentGenre) {
@@ -51,7 +46,6 @@ class GenreList extends PureComponent {
 
 GenreList.propTypes = {
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  onclickGenre: PropTypes.func.isRequired,
   setGenre: PropTypes.func.isRequired,
   setGenreList: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,

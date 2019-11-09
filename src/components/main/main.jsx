@@ -13,8 +13,14 @@ export class Main extends PureComponent {
   }
 
   componentDidMount() {
+    this.filterMoviesByGenre();
+  }
+
+  componentDidUpdate(prevProps) {
     const {currentGenre} = this.props;
-    this.filterMoviesByGenre(currentGenre);
+    if (prevProps.currentGenre !== currentGenre) {
+      this.filterMoviesByGenre();
+    }
   }
 
   filterMoviesByGenre() {
