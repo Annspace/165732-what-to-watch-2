@@ -94,7 +94,7 @@ export class Main extends PureComponent {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList onclickGenre={this.filterMoviesByGenre} movies={movies}/>
+          <GenreList movies={movies}/>
 
           <MovieList movies={filteredMovies}/>
 
