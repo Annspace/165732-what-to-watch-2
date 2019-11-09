@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer';
 import PropTypes from 'prop-types';
 import {MoviePropTypes} from '../../prop-types/prop-types';
-import {getMoviesByGenre} from '../../actions';
 import MovieList from '../movie-list/movie-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 
@@ -11,6 +11,12 @@ export class Main extends PureComponent {
     super(props);
     this.filterMoviesByGenre = this.filterMoviesByGenre.bind(this);
   }
+
+  componentDidMount() {
+    const {currentGenre} = this.props;
+    this.filterMoviesByGenre(currentGenre);
+  }
+
   filterMoviesByGenre(genreName) {
     const {filterByGenre, movies} = this.props;
     if (genreName === `All genres`) {
@@ -20,7 +26,7 @@ export class Main extends PureComponent {
     }
   }
   render() {
-    const {onHoverCard, filteredMovies, movies} = this.props;
+    const {filteredMovies, movies} = this.props;
     return <div>
       <section className="movie-card">
         <div className="movie-card__bg">
@@ -84,7 +90,7 @@ export class Main extends PureComponent {
 
           <GenreList onclickGenre={this.filterMoviesByGenre} movies={movies}/>
 
-          <MovieList movies={filteredMovies} onHoverCard={onHoverCard}/>
+          <MovieList movies={filteredMovies}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -110,18 +116,19 @@ export class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  onHoverCard: PropTypes.func.isRequired,
   filterByGenre: PropTypes.func.isRequired,
   filteredMovies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
+  currentGenre: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   filteredMovies: state.filteredMovies,
+  currentGenre: state.currentGenre,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  filterByGenre: (filteredMovies) => dispatch(getMoviesByGenre(filteredMovies)),
+  filterByGenre: (filteredMovies) => dispatch(ActionCreator.setFilteredMovies(filteredMovies)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

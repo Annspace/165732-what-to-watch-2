@@ -7,8 +7,10 @@ import mockData from '../../mocks/films.js';
 
 const mockStore = configureMockStore();
 const store = mockStore({
-  genre: `All genres`,
-  filteredMovies: mockData.movies,
+  movies: mockData.movies,
+  filteredMovies: [],
+  currentGenre: `All genres`,
+  genres: [`All genres`],
 });
 
 function createNodeMock(element) {
@@ -22,9 +24,8 @@ function createNodeMock(element) {
 
 it(`renders correctly`, () => {
   const options = {createNodeMock};
-  const clickTitleHandler = jest.fn();
   const AppComponent = renderer
     .create(
-        <Provider store={store}> <App onHoverCard={clickTitleHandler} movies={mockData.movies}/> </Provider>, options);
+        <Provider store={store}> <App movies={mockData.movies}/> </Provider>, options);
   expect(AppComponent).toMatchSnapshot();
 });

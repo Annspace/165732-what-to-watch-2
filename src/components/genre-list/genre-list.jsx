@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {MoviePropTypes} from '../../prop-types/prop-types';
-import {setGenreFilter} from '../../actions';
+import {ActionCreator} from '../../reducer';
 import {connect} from 'react-redux';
 
 class GenreList extends PureComponent {
@@ -13,24 +13,28 @@ class GenreList extends PureComponent {
 
   clickGenreHandler(genreName) {
     const {onclickGenre, setGenre} = this.props;
-    setGenre(genreName).then(onclickGenre(genreName));
+    setGenre(genreName);
+    onclickGenre(genreName);
   }
 
   getUniqueGenres() {
-    const {movies} = this.props;
+    const {movies, setGenreList, genres} = this.props;
     const genresArray = movies.map((movie) => movie.genre);
-    return genresArray.filter((movie, index) => genresArray.indexOf(movie) === index);
+    genresArray.unshift(`All genres`);
+    const genresList = genresArray.filter((movie, index) => genresArray.indexOf(movie) === index);
+    if (JSON.stringify(genresList) !== JSON.stringify(genres)) {
+      setGenreList(genresList);
+    }
   }
 
   render() {
-    const {genreToShow} = this.props;
-    const genres = this.getUniqueGenres();
-    genres.unshift(`All genres`);
+    const {currentGenre, genres} = this.props;
+    this.getUniqueGenres();
     return (
       <ul className="catalog__genres-list">
         {genres.map((genreItem, index) => {
           return <li key={index} onClick={() => this.clickGenreHandler(genreItem)} className={`catalog__genres-item
-           ${genreToShow === genreItem ? `catalog__genres-item--active` : ``}`}>
+           ${currentGenre === genreItem ? `catalog__genres-item--active` : ``}`}>
             <a className="catalog__genres-link">{genreItem}</a>
           </li>;
         })}
@@ -43,15 +47,19 @@ GenreList.propTypes = {
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   onclickGenre: PropTypes.func.isRequired,
   setGenre: PropTypes.func.isRequired,
-  genreToShow: PropTypes.string.isRequired,
+  setGenreList: PropTypes.func.isRequired,
+  currentGenre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  genreToShow: state.genre,
+  currentGenre: state.currentGenre,
+  genres: state.genres,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setGenre: (genre) => dispatch(setGenreFilter(genre)),
+  setGenre: (genre) => dispatch(ActionCreator.setGenreFilter(genre)),
+  setGenreList: (genres) => dispatch(ActionCreator.setGenresList(genres)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenreList);

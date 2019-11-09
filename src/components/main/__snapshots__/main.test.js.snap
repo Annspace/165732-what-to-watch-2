@@ -164,39 +164,6 @@ exports[`renders correctly 1`] = `
             All genres
           </a>
         </li>
-        <li
-          className="catalog__genres-item
-           "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-          >
-            fantasy
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item
-           "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-          >
-            drama
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item
-           "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-          >
-            comedy
-          </a>
-        </li>
       </ul>
       <div
         className="catalog__movies-list"

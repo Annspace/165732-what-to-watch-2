@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from './reducer';
-import mockData from './mocks/films.js';
+import {reducer} from './reducer';
 
 const init = () => {
   const store = createStore(reducer);
   ReactDOM.render(
       <Provider store={store}>
-        <App movies={mockData.movies} onHoverCard={() => {}}/>
+        <App movies={store.getState().movies}/>
       </Provider>,
       document.getElementById(`root`));
 };

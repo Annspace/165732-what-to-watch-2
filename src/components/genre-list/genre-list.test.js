@@ -7,8 +7,10 @@ import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore();
 const store = mockStore({
-  genre: `All genres`,
-  filteredMovies: mockData.movies,
+  movies: mockData.movies,
+  filteredMovies: [],
+  currentGenre: `drama`,
+  genres: [`All genres`, `drama`],
 });
 
 it(`renders correctly`, () => {

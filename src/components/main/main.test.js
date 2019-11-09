@@ -7,8 +7,10 @@ import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore();
 const store = mockStore({
-  genre: `All genres`,
-  filteredMovies: mockData.movies,
+  movies: mockData.movies,
+  filteredMovies: [],
+  currentGenre: `All genres`,
+  genres: [`All genres`],
 });
 
 function createNodeMock(element) {
@@ -26,7 +28,7 @@ it(`renders correctly`, () => {
   const filter = jest.fn();
   const mainComponent = renderer
     .create(<Provider store={store}>
-      <Main onHoverCard={hoverCardHandler} movies={mockData.movies} filterByGenre={filter} filteredMovies={mockData.movies}/>
+      <Main onHoverCard={hoverCardHandler} movies={mockData.movies} filterByGenre={filter} filteredMovies={mockData.movies} currentGenre={`All genres`}/>
     </Provider>, options).toJSON();
   expect(mainComponent).toMatchSnapshot();
 });

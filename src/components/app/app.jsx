@@ -4,10 +4,10 @@ import Main from '../main/main.jsx';
 import MovieInfo from '../movie-info/movie-info.jsx';
 
 const getPageScreen = (props) => {
-  const {movies, onHoverCard} = props;
+  const {movies} = props;
   switch (location.pathname) {
     case `/`:
-      return <Main movies={movies} onHoverCard={onHoverCard}/>;
+      return <Main movies={movies}/>;
     case `/films-${location.pathname.split(`-`).splice(-1)}`:
       return <MovieInfo
         movie={movies.filter((movie) => movie.id === +location.pathname.split(`-`).splice(-1))[0]}
@@ -24,7 +24,6 @@ const App = (props) => {
 getPageScreen.propTypes = {
   id: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired,
-  onHoverCard: PropTypes.func.isRequired,
 };
 
 export default App;

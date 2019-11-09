@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
 >
   <li
     className="catalog__genres-item
-           catalog__genres-item--active"
+           "
     onClick={[Function]}
   >
     <a
@@ -17,35 +17,13 @@ exports[`renders correctly 1`] = `
   </li>
   <li
     className="catalog__genres-item
-           "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-    >
-      fantasy
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item
-           "
+           catalog__genres-item--active"
     onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
     >
       drama
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item
-           "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-    >
-      comedy
     </a>
   </li>
 </ul>
