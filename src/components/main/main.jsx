@@ -1,36 +1,11 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer';
 import PropTypes from 'prop-types';
 import {MoviePropTypes} from '../../prop-types/prop-types';
 import MovieList from '../movie-list/movie-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 
 export class Main extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.filterMoviesByGenre = this.filterMoviesByGenre.bind(this);
-  }
-
-  componentDidMount() {
-    this.filterMoviesByGenre();
-  }
-
-  componentDidUpdate(prevProps) {
-    const {currentGenre} = this.props;
-    if (prevProps.currentGenre !== currentGenre) {
-      this.filterMoviesByGenre();
-    }
-  }
-
-  filterMoviesByGenre() {
-    const {filterByGenre, movies, currentGenre} = this.props;
-    if (currentGenre === `All genres`) {
-      filterByGenre(movies);
-    } else {
-      filterByGenre(movies.filter((movie) => movie.genre === currentGenre));
-    }
-  }
   render() {
     const {filteredMovies, movies} = this.props;
     return <div>
@@ -122,7 +97,6 @@ export class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  filterByGenre: PropTypes.func.isRequired,
   filteredMovies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
   currentGenre: PropTypes.string.isRequired,
@@ -133,8 +107,5 @@ const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  filterByGenre: (filteredMovies) => dispatch(ActionCreator.setFilteredMovies(filteredMovies)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

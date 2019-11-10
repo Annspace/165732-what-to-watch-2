@@ -1,6 +1,6 @@
 import {reducer} from './reducer';
 import {initialState} from './reducer';
-import {SET_GENRE_FILTER, SET_MOVIES_BY_GENRE, SET_GENRES_LIST} from './reducer';
+import {SET_GENRE_FILTER, SET_UPDATED_MOVIES_BY_GENRE} from './reducer';
 import mockData from './mocks/films';
 
 describe(`reducer`, () => {
@@ -14,42 +14,30 @@ describe(`reducer`, () => {
     };
     const state = {
       movies: mockData.movies,
-      filteredMovies: [],
-      currentGenre: `comedy`,
+      filteredMovies: mockData.movies,
+      currentGenre: `All genres`,
       genres: [`All genres`],
     };
     expect(reducer(state, setGenre)).toEqual(Object.assign({}, state, {
       currentGenre: `drama`,
+      filteredMovies: state.movies.filter((movie) => movie.genre === setGenre.payload),
     }));
   });
-  it(`Should handle SET_MOVIES_BY_GENRE`, () => {
+  it(`Should handle SET_UPDATED_MOVIES_BY_GENRE`, () => {
     const state = {
       movies: mockData.movies,
-      filteredMovies: [],
+      filteredMovies: mockData.movies,
       currentGenre: `All genres`,
       genres: [`All genres`],
     };
-    const setGenreFilterAction = {
-      type: SET_MOVIES_BY_GENRE,
-      payload: mockData.movies.filter((movie) => movie.genre === `drama`),
+    const setUpdatedMovies = {
+      type: SET_UPDATED_MOVIES_BY_GENRE,
+      payload: [mockData.movies[0]],
     };
-    expect(reducer(state, setGenreFilterAction)).toEqual(Object.assign({}, state, {
-      filteredMovies: setGenreFilterAction.payload,
-    }));
-  });
-  it(`Should handle SET_GENRES_LIST`, () => {
-    const state = {
-      movies: mockData.movies,
-      filteredMovies: [],
-      currentGenre: `All genres`,
-      genres: [`All genres`],
-    };
-    const setGenres = {
-      type: SET_GENRES_LIST,
-      payload: [`All genres`, `drama`],
-    };
-    expect(reducer(state, setGenres)).toEqual(Object.assign({}, state, {
-      genres: [`All genres`, `drama`],
+    expect(reducer(state, setUpdatedMovies)).toEqual(Object.assign({}, state, {
+      movies: setUpdatedMovies.payload,
+      filteredMovies: setUpdatedMovies.payload,
+      genres: [`All genres`, `fantasy`],
     }));
   });
 });

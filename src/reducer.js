@@ -1,13 +1,11 @@
-import mockData from './mocks/films';
 export const SET_GENRE_FILTER = `SET_GENRE_FILTER`;
-export const SET_MOVIES_BY_GENRE = `SET_MOVIES_BY_GENRE`;
-export const SET_GENRES_LIST = `SET_GENRES_LIST`;
+export const SET_UPDATED_MOVIES_BY_GENRE = `SET_UPDATED_MOVIES_BY_GENRE`;
 
 export const initialState = {
-  movies: mockData.movies,
+  movies: [],
   filteredMovies: [],
   currentGenre: `All genres`,
-  genres: [`All genres`],
+  genres: [],
 };
 
 export const ActionCreator = {
@@ -15,30 +13,30 @@ export const ActionCreator = {
     type: SET_GENRE_FILTER,
     payload: genre
   }),
-  setFilteredMovies: (filteredMovies) => ({
-    type: SET_MOVIES_BY_GENRE,
-    payload: filteredMovies,
-  }),
-  setGenresList: (uniqueGenres) => ({
-    type: SET_GENRES_LIST,
-    payload: uniqueGenres,
+  setUpdatedMovies: (movies) => ({
+    type: SET_UPDATED_MOVIES_BY_GENRE,
+    payload: movies,
   }),
 };
 
+const getUniqueGenres = (movies) => {
+  const genresArray = movies.map((movie) => movie.genre);
+  genresArray.unshift(`All genres`);
+  return genresArray.filter((movie, index) => genresArray.indexOf(movie) === index);
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_GENRE_FILTER:
       return Object.assign({}, state, {
         currentGenre: action.payload,
+        filteredMovies: action.payload === `All genres` ? state.movies : state.movies.filter((movie) => movie.genre === action.payload),
       });
-    case SET_MOVIES_BY_GENRE:
+    case SET_UPDATED_MOVIES_BY_GENRE:
       return Object.assign({}, state, {
-        filteredMovies: action.payload,
-      });
-    case SET_GENRES_LIST:
-      return Object.assign({}, state, {
-        genres: action.payload,
+        movies: action.payload,
+        filteredMovies: state.currentGenre === `All genres` ? action.payload : action.payload.filter((movie) => movie.genre === state.currentGenre),
+        genres: getUniqueGenres(action.payload),
       });
     default:
       return state;
