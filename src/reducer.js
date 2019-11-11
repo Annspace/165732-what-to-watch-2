@@ -1,10 +1,11 @@
 export const SET_GENRE_FILTER = `SET_GENRE_FILTER`;
 export const SET_UPDATED_MOVIES_BY_GENRE = `SET_UPDATED_MOVIES_BY_GENRE`;
+const ALL_GENRES = `All genres`;
 
 export const initialState = {
   movies: [],
   filteredMovies: [],
-  currentGenre: `All genres`,
+  currentGenre: ALL_GENRES,
   genres: [],
 };
 
@@ -30,12 +31,12 @@ export const reducer = (state = initialState, action) => {
     case SET_GENRE_FILTER:
       return Object.assign({}, state, {
         currentGenre: action.payload,
-        filteredMovies: action.payload === `All genres` ? state.movies : state.movies.filter((movie) => movie.genre === action.payload),
+        filteredMovies: action.payload === ALL_GENRES ? state.movies : state.movies.filter((movie) => movie.genre === action.payload),
       });
     case SET_UPDATED_MOVIES_BY_GENRE:
       return Object.assign({}, state, {
         movies: action.payload,
-        filteredMovies: state.currentGenre === `All genres` ? action.payload : action.payload.filter((movie) => movie.genre === state.currentGenre),
+        filteredMovies: state.currentGenre === ALL_GENRES ? action.payload : action.payload.filter((movie) => movie.genre === state.currentGenre),
         genres: getUniqueGenres(action.payload),
       });
     default:
