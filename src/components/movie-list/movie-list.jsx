@@ -12,8 +12,6 @@ class MovieList extends PureComponent {
     };
   }
   hoverCardHandler = (id) => {
-    const {onHoverCard} = this.props;
-    onHoverCard();
     this.timer = setTimeout(() => {
       this.setState({activeCard: id});
     }, 1000);
@@ -54,7 +52,6 @@ class MovieList extends PureComponent {
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
-  onHoverCard: PropTypes.func.isRequired,
 };
 
 export default MovieList;
