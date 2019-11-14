@@ -4,9 +4,13 @@ import VideoPlayer from '../videoplayer/videoplayer.jsx';
 import {MoviePropTypes} from '../../prop-types/prop-types';
 
 class MovieCard extends PureComponent {
-  navigateToDetailsPage = (id) => {
+  constructor(props) {
+    super(props);
+    this.navigateToDetailsPage = this.navigateToDetailsPage.bind(this);
+  }
+  navigateToDetailsPage(id) {
     location.href = `/films-${id}`;
-  };
+  }
   render() {
     const {movie, onLeaveCard, onHoverCard, isPlaying} = this.props;
     const {id, src, posterImage, title} = movie;

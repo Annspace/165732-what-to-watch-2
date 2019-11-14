@@ -11,12 +11,13 @@ class Tabs extends PureComponent {
     this.state = {
       activeTab: `Details`,
     };
+    this.tabClickHandler = this.tabClickHandler.bind(this);
   }
-  tabClickHandler = (tabName) => {
+  tabClickHandler(tabName) {
     this.setState({
       activeTab: tabName,
     });
-  };
+  }
   render() {
     const {activeTab} = this.state;
     const {tabs, movie} = this.props;
