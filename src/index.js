@@ -7,7 +7,10 @@ import {ActionCreator, reducer} from './reducer';
 import mockData from './mocks/films';
 
 const init = () => {
-  const store = createStore(reducer);
+  const store = createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+  );
   store.dispatch(ActionCreator.setUpdatedMovies(mockData.movies));
   ReactDOM.render(
       <Provider store={store}>

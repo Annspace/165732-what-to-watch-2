@@ -6,20 +6,14 @@ env:
 
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
 
-parser: 'babel-eslint'
-
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 2018
+  ecmaVersion: 6
   sourceType: module
 
-plugins: ['react', 'babel']
+plugins: ['react']
 
 settings:
   react:
     version: '16'
-
-rules:
-  no-invalid-this: 0
-  babel/no-invalid-this: 1

@@ -2,46 +2,40 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card.jsx';
 import {MoviePropTypes} from '../../prop-types/prop-types';
+import withActiveItem from '../../hocs/with-active-item';
 
 class MovieList extends PureComponent {
   constructor(props) {
     super(props);
     this.timer = null;
-    this.state = {
-      activeCard: -1,
-    };
+    this.hoverCardHandler = this.hoverCardHandler.bind(this);
+    this.leaveCardHandler = this.leaveCardHandler.bind(this);
   }
-  hoverCardHandler = (id) => {
+  hoverCardHandler(id) {
+    const {onActiveChange} = this.props;
     this.timer = setTimeout(() => {
-      this.setState({activeCard: id});
+      onActiveChange(id);
     }, 1000);
-  };
-  leaveCardHandler = () => {
-    this.setState({
-      activeCard: -1,
-    }, () => {
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
-    });
-  };
-  componentWillUnmount() {
+  }
+  leaveCardHandler() {
+    const {onActiveChange} = this.props;
+    onActiveChange(-1);
     if (this.timer) {
       clearTimeout(this.timer);
     }
   }
   render() {
-    const {movies} = this.props;
+    const {movies, activeItem} = this.props;
     return (
       <div className="catalog__movies-list">
         {
           movies.map((movie) => {
             return <MovieCard
-              movie = {movie}
+              movie={movie}
               key={movie.id}
               onHoverCard={this.hoverCardHandler}
               onLeaveCard={this.leaveCardHandler}
-              isPlaying={this.state.activeCard === movie.id}
+              isPlaying={activeItem === movie.id}
             />;
           })
         }
@@ -52,6 +46,8 @@ class MovieList extends PureComponent {
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(MoviePropTypes).isRequired,
+  onActiveChange: PropTypes.func.isRequired,
+  activeItem: PropTypes.number.isRequired,
 };
 
-export default MovieList;
+export default withActiveItem(MovieList);

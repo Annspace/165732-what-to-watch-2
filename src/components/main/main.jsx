@@ -69,7 +69,7 @@ export class Main extends PureComponent {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList movies={movies}/>
+          <GenreList movies={movies} activeItem={`All genres`}/>
 
           <MovieList movies={filteredMovies}/>
 

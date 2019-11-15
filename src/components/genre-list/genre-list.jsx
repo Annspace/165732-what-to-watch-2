@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {MoviePropTypes} from '../../prop-types/prop-types';
 import {ActionCreator} from '../../reducer';
 import {connect} from 'react-redux';
+import withActiveItem from '../../hocs/with-active-item';
 
 class GenreList extends PureComponent {
   constructor(props) {
@@ -11,19 +12,20 @@ class GenreList extends PureComponent {
   }
 
   clickGenreHandler(genreName) {
-    const {setGenre, currentGenre} = this.props;
+    const {setGenre, currentGenre, onActiveChange} = this.props;
+    onActiveChange(genreName);
     if (genreName !== currentGenre) {
       setGenre(genreName);
     }
   }
 
   render() {
-    const {currentGenre, genres} = this.props;
+    const {genres, activeItem} = this.props;
     return (
       <ul className="catalog__genres-list">
         {genres.map((genreItem, index) => {
           return <li key={index} onClick={() => this.clickGenreHandler(genreItem)} className={`catalog__genres-item
-           ${currentGenre === genreItem ? `catalog__genres-item--active` : ``}`}>
+           ${activeItem === genreItem ? `catalog__genres-item--active` : ``}`}>
             <a className="catalog__genres-link">{genreItem}</a>
           </li>;
         })}
@@ -37,6 +39,8 @@ GenreList.propTypes = {
   setGenre: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onActiveChange: PropTypes.func.isRequired,
+  activeItem: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 const mapStateToProps = (state) => ({
@@ -48,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
   setGenre: (genre) => dispatch(ActionCreator.setGenreFilter(genre)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GenreList);
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveItem(GenreList));
