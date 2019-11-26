@@ -7,9 +7,10 @@ class VideoPlayer extends PureComponent {
     this.videoRef = React.createRef();
     this.pauseVideoHandler = this.pauseVideoHandler.bind(this);
     this.secondsToHms = this.secondsToHms.bind(this);
+    this.videoProgress = this.videoProgress.bind(this);
     this.state = {
-      playing: this.props.isPlaying,
-      progress: 0,
+      playing: props.isPlaying,
+      currentTime: 0,
       pause: false,
       duration: 0,
     };
@@ -23,7 +24,9 @@ class VideoPlayer extends PureComponent {
       }, () => {
         this.videoRef.current.ontimeupdate = () => {
           this.setState({
-            progress: Math.floor(this.videoRef.current.currentTime / this.videoRef.current.duration * 100)});
+            currentTime: this.videoRef.current.currentTime
+          }
+          );
         };
       });
     };
@@ -54,6 +57,11 @@ class VideoPlayer extends PureComponent {
     return h + `:` + m + `:` + s;
   }
 
+  videoProgress() {
+    const {duration, currentTime} = this.state;
+    return duration > 0 ? Math.floor(currentTime / duration * 100) : 0;
+  }
+
   pauseVideoHandler() {
     const {pause} = this.state;
     this.setState({pause: !pause}, () => {
@@ -67,7 +75,7 @@ class VideoPlayer extends PureComponent {
 
   render() {
     const {src, poster, fullScreen, fullScreenCancel} = this.props;
-    const {pause, progress} = this.state;
+    const {pause, currentTime} = this.state;
     return (
       <>
         {fullScreen &&
@@ -78,10 +86,10 @@ class VideoPlayer extends PureComponent {
           <div className="player__controls">
             <div className="player__controls-row">
               <div className="player__time">
-                <progress className="player__progress" value={progress} max="100"/>
-                <div className="player__toggler" style={{left: progress + `%`}}>Toggler</div>
+                <progress className="player__progress" value={this.videoProgress()} max="100"/>
+                <div className="player__toggler" style={{left: this.videoProgress() + `%`}}>Toggler</div>
               </div>
-              <div className="player__time-value">{this.secondsToHms(progress)}</div>
+              <div className="player__time-value">{this.secondsToHms(currentTime)}</div>
             </div>
 
             <div className="player__controls-row">
