@@ -19,7 +19,7 @@ class MovieCard extends PureComponent {
         onMouseOver={() => onHoverCard(id)}
         onMouseLeave={onLeaveCard}>
         <div className="small-movie-card__image" onClick={() => this.navigateToDetailsPage(id)}>
-          <VideoPlayer isMuted={true} isPlaying={isPlaying} poster={posterImage} src={src}/>
+          <VideoPlayer isMuted isPlaying={isPlaying} poster={posterImage} src={src}/>
         </div>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href={`/films-${id}`}>{title}</a>
